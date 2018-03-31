@@ -37,6 +37,7 @@ import { FlickrService } from './services/flickr.service.client';
 import { SortableDirective } from './directives/sortable.directive';
 import {SharedService} from './services/shared.service.client';
 import {AuthenticationService} from './services/authentication.service.client';
+import {HashLocationStrategy, LocationStrategy} from '@angular/common';
 @NgModule({
   // Declare components here
   declarations: [
@@ -79,7 +80,8 @@ import {AuthenticationService} from './services/authentication.service.client';
     WidgetService,
     FlickrService,
     SharedService,
-    AuthenticationService
+    AuthenticationService,
+    {provide: LocationStrategy, useClass: HashLocationStrategy}
   ],
   bootstrap: [AppComponent]
 })

@@ -103,12 +103,14 @@ AppComponent = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_33__directives_sortable_directive__ = __webpack_require__("./src/app/directives/sortable.directive.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_34__services_shared_service_client__ = __webpack_require__("./src/app/services/shared.service.client.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_35__services_authentication_service_client__ = __webpack_require__("./src/app/services/authentication.service.client.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_36__angular_common__ = __webpack_require__("./node_modules/@angular/common/@angular/common.es5.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -193,7 +195,8 @@ AppModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_31__services_widget_service_client__["a" /* WidgetService */],
             __WEBPACK_IMPORTED_MODULE_32__services_flickr_service_client__["a" /* FlickrService */],
             __WEBPACK_IMPORTED_MODULE_34__services_shared_service_client__["a" /* SharedService */],
-            __WEBPACK_IMPORTED_MODULE_35__services_authentication_service_client__["a" /* AuthenticationService */]
+            __WEBPACK_IMPORTED_MODULE_35__services_authentication_service_client__["a" /* AuthenticationService */],
+            { provide: __WEBPACK_IMPORTED_MODULE_36__angular_common__["g" /* LocationStrategy */], useClass: __WEBPACK_IMPORTED_MODULE_36__angular_common__["d" /* HashLocationStrategy */] }
         ],
         bootstrap: [__WEBPACK_IMPORTED_MODULE_3__app_component__["a" /* AppComponent */]]
     })
