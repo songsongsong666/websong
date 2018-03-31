@@ -13,7 +13,7 @@ export class PageService {
 
   // adds the page parameter instance to the local pages array. The new page's websiteId is set to the websiteId parameter
   createPage(websiteId: String, page: Page) {
-    const url = this.baseUrl + '/api/website/' + websiteId + '/page';
+    const url =  '/api/website/' + websiteId + '/page';
     return this.http.post(url, page)
       .map(
         (response: Response) => {

@@ -2299,7 +2299,7 @@ var PageService = (function () {
     }
     // adds the page parameter instance to the local pages array. The new page's websiteId is set to the websiteId parameter
     PageService.prototype.createPage = function (websiteId, page) {
-        var url = this.baseUrl + '/api/website/' + websiteId + '/page';
+        var url = '/api/website/' + websiteId + '/page';
         return this.http.post(url, page)
             .map(function (response) {
             return response.json();
