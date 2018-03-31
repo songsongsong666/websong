@@ -10,13 +10,12 @@ import {Router} from '@angular/router';
 export class UserService {
 
   baseUrl = environment.baseUrl;
-
   options = new RequestOptions();
 
   constructor(private http: Http, private sharedService: SharedService, private router: Router) {}
 
   register(username, password) {
-    const url = this.baseUrl + '/api/register';
+    const url = '/api/register';
     const credentials = {
       username: username,
       password: password
@@ -31,7 +30,7 @@ export class UserService {
   }
 
   login(username: String, password: String) {
-    const url = this.baseUrl + '/api/login';
+    const url = '/api/login';
     const credentials = {
       username: username,
       password: password
@@ -46,7 +45,7 @@ export class UserService {
   }
 
   logout() {
-    const url = this.baseUrl + '/api/logout';
+    const url =   '/api/logout';
     this.options.withCredentials = true;
     return this.http.post(url, {}, this.options)
       .map(
@@ -57,7 +56,7 @@ export class UserService {
   }
 
   loggedIn() {
-    const url = this.baseUrl + '/api/loggedIn';
+    const url =  '/api/loggedIn';
     this.options.withCredentials = true;
     return this.http.post(url, {}, this.options)
       .map(
@@ -76,7 +75,7 @@ export class UserService {
 
   // returns the user whose username and password match the username and password parameters
   findUserByCredentials(username: String, password: String) {
-    const url =  this.baseUrl + '/api/user?username=' + username + '&password=' + password;
+    const url =   '/api/user?username=' + username + '&password=' + password;
     return this.http.get(url)
       .map(
         (response: Response) => {
@@ -86,7 +85,7 @@ export class UserService {
 
   // returns the user in local users array whose _id matches the userId parameter
   findUserById(uid: String) {
-    const url =  this.baseUrl + '/api/user/' + uid;
+    const url =   '/api/user/' + uid;
     return this.http.get(url)
       .map(
         (response: Response) => {
@@ -97,7 +96,7 @@ export class UserService {
 
   //  adds the user parameter instance to the local users array
   createUser(user: User) {
-    const url =  this.baseUrl + '/api/user';
+    const url =  '/api/user';
     return this.http.post(url, user)
       .map(
         (response: Response) => {
@@ -108,7 +107,7 @@ export class UserService {
 
   //  returns the user in local users array whose username matches the parameter username
   findUserByUsername(username: String) {
-    const url =  this.baseUrl + '/api/user?username=' + username;
+    const url =   '/api/user?username=' + username;
     return this.http.get(url)
       .map(
         (response: Response) => {
@@ -118,7 +117,7 @@ export class UserService {
 
   // updates the user in local users array whose _id matches the userId parameter
   updateUser(userId: String, user: User) {
-    const url = this.baseUrl + '/api/user/' + userId;
+    const url = '/api/user/' + userId;
     return this.http.put(url, user)
       .map(
         (response: Response) => {
@@ -129,7 +128,7 @@ export class UserService {
 
   // removes the user whose _id matches the userId parameter
   deleteUser(userId: String) {
-    const url = this.baseUrl + '/api/user/' + userId;
+    const url =  '/api/user/' + userId;
     return this.http.delete(url)
       .map(
         (response: Response) => {

@@ -2304,7 +2304,7 @@ var PageService = (function () {
     };
     // retrieves the pages in local pages array whose websiteId matches the parameter websiteId
     PageService.prototype.findPageByWebsiteId = function (websiteId) {
-        var url = this.baseUrl + '/api/website/' + websiteId + '/page';
+        var url = '/api/website/' + websiteId + '/page';
         return this.http.get(url)
             .map(function (response) {
             return response.json();
@@ -2312,7 +2312,7 @@ var PageService = (function () {
     };
     // retrieves the page in local pages array whose _id matches the pageId parameter
     PageService.prototype.findPageById = function (pageId) {
-        var url = this.baseUrl + '/api/page/' + pageId;
+        var url = '/api/page/' + pageId;
         return this.http.get(url)
             .map(function (response) {
             return response.json();
@@ -2320,7 +2320,7 @@ var PageService = (function () {
     };
     // updates the page in local pages array whose _id matches the pageId parameter
     PageService.prototype.updatePage = function (pageId, page) {
-        var url = this.baseUrl + '/api/page/' + pageId;
+        var url = '/api/page/' + pageId;
         return this.http.put(url, page)
             .map(function (response) {
             return response.json();
@@ -2328,7 +2328,7 @@ var PageService = (function () {
     };
     // removes the page from local pages array whose _id matches the pageId parameter
     PageService.prototype.deletePage = function (pageId) {
-        var url = this.baseUrl + '/api/page/' + pageId;
+        var url = '/api/page/' + pageId;
         return this.http.delete(url)
             .map(function (response) {
             return response.json();
@@ -2473,7 +2473,7 @@ var UserService = (function () {
         this.options = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* RequestOptions */]();
     }
     UserService.prototype.register = function (username, password) {
-        var url = this.baseUrl + '/api/register';
+        var url = '/api/register';
         var credentials = {
             username: username,
             password: password
@@ -2485,7 +2485,7 @@ var UserService = (function () {
         });
     };
     UserService.prototype.login = function (username, password) {
-        var url = this.baseUrl + '/api/login';
+        var url = '/api/login';
         var credentials = {
             username: username,
             password: password
@@ -2497,7 +2497,7 @@ var UserService = (function () {
         });
     };
     UserService.prototype.logout = function () {
-        var url = this.baseUrl + '/api/logout';
+        var url = '/api/logout';
         this.options.withCredentials = true;
         return this.http.post(url, {}, this.options)
             .map(function (response) {
@@ -2506,7 +2506,7 @@ var UserService = (function () {
     };
     UserService.prototype.loggedIn = function () {
         var _this = this;
-        var url = this.baseUrl + '/api/loggedIn';
+        var url = '/api/loggedIn';
         this.options.withCredentials = true;
         return this.http.post(url, {}, this.options)
             .map(function (res) {
@@ -2523,7 +2523,7 @@ var UserService = (function () {
     };
     // returns the user whose username and password match the username and password parameters
     UserService.prototype.findUserByCredentials = function (username, password) {
-        var url = this.baseUrl + '/api/user?username=' + username + '&password=' + password;
+        var url = '/api/user?username=' + username + '&password=' + password;
         return this.http.get(url)
             .map(function (response) {
             return response.json();
@@ -2531,7 +2531,7 @@ var UserService = (function () {
     };
     // returns the user in local users array whose _id matches the userId parameter
     UserService.prototype.findUserById = function (uid) {
-        var url = this.baseUrl + '/api/user/' + uid;
+        var url = '/api/user/' + uid;
         return this.http.get(url)
             .map(function (response) {
             return response.json();
@@ -2539,7 +2539,7 @@ var UserService = (function () {
     };
     //  adds the user parameter instance to the local users array
     UserService.prototype.createUser = function (user) {
-        var url = this.baseUrl + '/api/user';
+        var url = '/api/user';
         return this.http.post(url, user)
             .map(function (response) {
             return response.json();
@@ -2547,7 +2547,7 @@ var UserService = (function () {
     };
     //  returns the user in local users array whose username matches the parameter username
     UserService.prototype.findUserByUsername = function (username) {
-        var url = this.baseUrl + '/api/user?username=' + username;
+        var url = '/api/user?username=' + username;
         return this.http.get(url)
             .map(function (response) {
             return response.json();
@@ -2555,7 +2555,7 @@ var UserService = (function () {
     };
     // updates the user in local users array whose _id matches the userId parameter
     UserService.prototype.updateUser = function (userId, user) {
-        var url = this.baseUrl + '/api/user/' + userId;
+        var url = '/api/user/' + userId;
         return this.http.put(url, user)
             .map(function (response) {
             return response.json();
@@ -2563,7 +2563,7 @@ var UserService = (function () {
     };
     // removes the user whose _id matches the userId parameter
     UserService.prototype.deleteUser = function (userId) {
-        var url = this.baseUrl + '/api/user/' + userId;
+        var url = '/api/user/' + userId;
         return this.http.delete(url)
             .map(function (response) {
             return response.json();
@@ -2611,7 +2611,7 @@ var WebsiteService = (function () {
     }
     // adds the website parameter instance to the local websites array. The new website's developerId is set to the userId parameter
     WebsiteService.prototype.createWebsite = function (userId, website) {
-        var url = this.baseUrl + '/api/user/' + userId + '/website';
+        var url = '/api/user/' + userId + '/website';
         return this.http.post(url, website)
             .map(function (response) {
             return response.json();
@@ -2619,7 +2619,7 @@ var WebsiteService = (function () {
     };
     // retrieves the websites in local websites array whose developerId matches the parameter userId
     WebsiteService.prototype.findWebsitesByUser = function (userId) {
-        var url = this.baseUrl + '/api/user/' + userId + '/website';
+        var url = '/api/user/' + userId + '/website';
         return this.http.get(url)
             .map(function (response) {
             return response.json();
@@ -2627,7 +2627,7 @@ var WebsiteService = (function () {
     };
     // retrieves the website in local websites array whose _id matches the websiteId parameter
     WebsiteService.prototype.findWebsiteById = function (websiteId) {
-        var url = this.baseUrl + '/api/website/' + websiteId;
+        var url = '/api/website/' + websiteId;
         return this.http.get(url)
             .map(function (response) {
             return response.json();
@@ -2635,7 +2635,7 @@ var WebsiteService = (function () {
     };
     // updates the website in local websites array whose _id matches the websiteId parameter
     WebsiteService.prototype.updateWebsite = function (websiteId, website) {
-        var url = this.baseUrl + '/api/website/' + websiteId;
+        var url = '/api/website/' + websiteId;
         return this.http.put(url, website)
             .map(function (response) {
             return response.json();
@@ -2643,7 +2643,7 @@ var WebsiteService = (function () {
     };
     // removes the website from local websites array whose _id matches the websiteId parameter
     WebsiteService.prototype.deleteWebsite = function (websiteId) {
-        var url = this.baseUrl + '/api/website/' + websiteId;
+        var url = '/api/website/' + websiteId;
         return this.http.delete(url)
             .map(function (response) {
             return response.json();
@@ -2691,7 +2691,7 @@ var WidgetService = (function () {
     }
     // adds the widget parameter instance to the local widgets array. The new widget's pageId is set to the pageId parameter
     WidgetService.prototype.createWidget = function (pageId, widget) {
-        var url = this.baseUrl + '/api/page/' + pageId + '/widget';
+        var url = '/api/page/' + pageId + '/widget';
         return this.http.post(url, widget)
             .map(function (response) {
             return response.json();
@@ -2699,7 +2699,7 @@ var WidgetService = (function () {
     };
     // retrieves the widgets in local widgets array whose pageId matches the parameter pageId
     WidgetService.prototype.findWidgetsByPageId = function (pageId) {
-        var url = this.baseUrl + '/api/page/' + pageId + '/widget';
+        var url = '/api/page/' + pageId + '/widget';
         return this.http.get(url)
             .map(function (response) {
             return response.json();
@@ -2707,7 +2707,7 @@ var WidgetService = (function () {
     };
     // retrieves the widget in local widgets array whose _id matches the widgetId parameter
     WidgetService.prototype.findWidgetById = function (widgetId) {
-        var url = this.baseUrl + '/api/widget/' + widgetId;
+        var url = '/api/widget/' + widgetId;
         return this.http.get(url)
             .map(function (response) {
             return response.json();
@@ -2715,7 +2715,7 @@ var WidgetService = (function () {
     };
     // updates the widget in local widgets array whose _id matches the widgetId parameter
     WidgetService.prototype.updateWidget = function (widgetId, widget) {
-        var url = this.baseUrl + '/api/widget/' + widgetId;
+        var url = '/api/widget/' + widgetId;
         return this.http.put(url, widget)
             .map(function (response) {
             return response.json();
@@ -2723,14 +2723,14 @@ var WidgetService = (function () {
     };
     // removes the widget from local widgets array whose _id matches the widgetId parameter
     WidgetService.prototype.deleteWidget = function (widgetId) {
-        var url = this.baseUrl + '/api/widget/' + widgetId;
+        var url = '/api/widget/' + widgetId;
         return this.http.delete(url)
             .map(function (response) {
             return response.json();
         });
     };
     WidgetService.prototype.reorderWidgets = function (pageId, start, end) {
-        var url = this.baseUrl + '/api/page/' + pageId + '/widget?start=' + start + '&end=' + end;
+        var url = '/api/page/' + pageId + '/widget?start=' + start + '&end=' + end;
         return this.http.put(url, '')
             .map(function (response) {
             return response.json();

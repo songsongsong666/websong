@@ -13,7 +13,7 @@ export class WidgetService {
 
   // adds the widget parameter instance to the local widgets array. The new widget's pageId is set to the pageId parameter
   createWidget(pageId, widget) {
-    const url = this.baseUrl + '/api/page/' + pageId + '/widget';
+    const url =  '/api/page/' + pageId + '/widget';
     return this.http.post(url, widget)
       .map(
         (response: Response) => {
@@ -24,7 +24,7 @@ export class WidgetService {
 
   // retrieves the widgets in local widgets array whose pageId matches the parameter pageId
   findWidgetsByPageId(pageId: String) {
-    const url = this.baseUrl + '/api/page/' + pageId + '/widget';
+    const url =  '/api/page/' + pageId + '/widget';
     return this.http.get(url)
       .map(
         (response: Response) => {
@@ -35,7 +35,7 @@ export class WidgetService {
 
   // retrieves the widget in local widgets array whose _id matches the widgetId parameter
   findWidgetById(widgetId: String) {
-    const url = this.baseUrl + '/api/widget/' + widgetId;
+    const url =  '/api/widget/' + widgetId;
     return this.http.get(url)
       .map(
         (response: Response) => {
@@ -46,7 +46,7 @@ export class WidgetService {
 
   // updates the widget in local widgets array whose _id matches the widgetId parameter
   updateWidget(widgetId: String, widget: Widget) {
-    const url = this.baseUrl + '/api/widget/' + widgetId;
+    const url = '/api/widget/' + widgetId;
     return this.http.put(url, widget)
       .map(
         (response: Response) => {
@@ -57,7 +57,7 @@ export class WidgetService {
 
   // removes the widget from local widgets array whose _id matches the widgetId parameter
   deleteWidget(widgetId: String) {
-    const url = this.baseUrl + '/api/widget/' + widgetId;
+    const url = '/api/widget/' + widgetId;
     return this.http.delete(url)
       .map(
         (response: Response) => {
@@ -67,7 +67,7 @@ export class WidgetService {
   }
 
   reorderWidgets(pageId, start, end) {
-    const url = this.baseUrl + '/api/page/' + pageId + '/widget?start=' + start + '&end=' + end;
+    const url =  '/api/page/' + pageId + '/widget?start=' + start + '&end=' + end;
     return this.http.put(url, '')
       .map(
         (response: Response) => {

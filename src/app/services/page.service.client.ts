@@ -24,7 +24,7 @@ export class PageService {
 
   // retrieves the pages in local pages array whose websiteId matches the parameter websiteId
   findPageByWebsiteId(websiteId: String) {
-    const url = this.baseUrl + '/api/website/' + websiteId + '/page';
+    const url =  '/api/website/' + websiteId + '/page';
     return this.http.get(url)
       .map(
         (response: Response) => {
@@ -35,7 +35,7 @@ export class PageService {
 
   // retrieves the page in local pages array whose _id matches the pageId parameter
   findPageById(pageId: String) {
-    const url = this.baseUrl + '/api/page/' + pageId;
+    const url =  '/api/page/' + pageId;
     return this.http.get(url)
       .map(
         (response: Response) => {
@@ -46,7 +46,7 @@ export class PageService {
 
   // updates the page in local pages array whose _id matches the pageId parameter
   updatePage(pageId: String, page: Page) {
-    const url = this.baseUrl + '/api/page/' + pageId;
+    const url =  '/api/page/' + pageId;
     return this.http.put(url, page)
       .map(
         (response: Response) => {
@@ -57,7 +57,7 @@ export class PageService {
 
   // removes the page from local pages array whose _id matches the pageId parameter
   deletePage(pageId: String) {
-    const url = this.baseUrl + '/api/page/' + pageId;
+    const url =  '/api/page/' + pageId;
     return this.http.delete(url)
       .map(
         (response: Response) => {
