@@ -1,4 +1,4 @@
-# websong
+# webdev-songsf
 This is a push from personal git as the final finished website of the assignment
 
 # To run locally
