@@ -1,0 +1,99 @@
+
+<nav class="navbar navbar-default navbar-fixed-top  sw-nav-blue">
+  <div class="container-fluid">
+
+    <!--heading on the nav bar-->
+    <a routerLink="/user"
+       class="navbar-header pull-left navbar-brand thick">
+      <b class="sw-text-white">Profile</b>
+    </a>
+
+
+    <!--tick mark-->
+    <p class="navbar-text pull-right">
+      <button type="submit"
+              [disabled]="!f.valid"
+              form="profileForm"
+              class="btn btn-xs navbar-link sw-button-transparent">
+        <span class="glyphicon glyphicon-ok sw-text-white"></span>
+      </button>
+    </p>
+  </div>
+</nav>
+
+<div class="container-fluid">
+  <div *ngIf="usernameTaken"
+       class="alert alert-danger" >
+    Username was taken!
+  </div>
+  <div *ngIf="submitSuccess"
+       class="alert alert-success" >
+    Submit successfully!
+  </div>
+  <form (ngSubmit)="update()"
+        #f ="ngForm"
+        id="profileForm">
+    <div class="form-group">
+      <label for="username">Username</label>
+      <input type="text"
+             class="form-control"
+             id="username"
+             name="username"
+             required
+             #username="ngModel"
+             ngModel="{{user.username}}"
+             placeholder="username">
+    </div>
+    <span class="help-block"
+          *ngIf="!username.valid && username.touched">Username can't be empty!</span>
+
+    <div class="form-group">
+      <label for="email">Email address</label>
+      <input type="email"
+             class="form-control"
+             id="email"
+             name="email"
+             email
+             ngModel="{{user.email}}"
+             #email="ngModel"
+             placeholder="alice.wonderland@unicorn.com">
+    </div>
+    <span class="help-block"
+          *ngIf="!email.valid && email.touched">Invalid email!</span>
+    <div class="form-group">
+      <label for="firstName">First Name</label>
+      <input type="text"
+             class="form-control"
+             id="firstName"
+             name="firstName"
+             ngModel="{{user.firstName}}"
+             #firstName="ngModel"
+             placeholder="Alice">
+    </div>
+    <div class="form-group">
+      <label for="lastName">Last Name</label>
+      <input type="text"
+             class="form-control"
+             id="lastName"
+             name="lastName"
+             ngModel="{{user.lastName}}"
+             #lastName="ngModel"
+             placeholder="Wonderland">
+    </div>
+  </form>
+
+  <a class="btn btn-primary btn-block"
+     routerLink="/user/{{uid}}/website">Websites</a>
+  <a class="btn btn-danger btn-block"
+     (click)="logout()">Logout</a>
+</div>
+
+<!-- Footer -->
+<nav class="navbar navbar-default navbar-fixed-bottom sw-nav-blue">
+  <div class="container-fluid">
+    <a routerLink="/user"
+       class="navbar-text pull-right">
+      <span class="glyphicon glyphicon-user sw-text-white"></span>
+    </a>
+  </div>
+</nav>

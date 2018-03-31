@@ -1,0 +1,91 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+    <p class="navbar-text pull-left">
+      <a routerLink="/user/{{uid}}/website/{{wid}}/page"
+         class="navbar-link">
+        <span class="glyphicon glyphicon-chevron-left sw-text-black"></span>
+      </a>
+    </p>
+    <a routerLink="/user/{{uid}}/website/{{wid}}/page/{{pid}}/widget"
+       class="pull-left navbar-brand thick">
+      <b>Widgets</b>
+    </a>
+    <a routerLink="/user/{{uid}}/website/{{wid}}/page/{{pid}}/widget/new"
+       class="navbar-link navbar-text pull-right sw-icon-padding">
+      <span class="glyphicon glyphicon-plus sw-text-black"></span>
+    </a>
+  </div>
+</nav>
+
+<!--widget list-->
+<div class="container-fluid"
+     appSortable>
+  <div *ngFor="let widget of widgets">
+    <div>
+      <div class="sw-icon-right sw-icon-above">
+        <a routerLink="/user/{{uid}}/website/{{wid}}/page/{{pid}}/widget/{{widget._id}}">
+          <span class="glyphicon glyphicon-cog"></span>
+        </a>
+        <span class="glyphicon glyphicon-menu-hamburger sw-text-black"></span>
+      </div>
+    </div>
+    <div [ngSwitch]="widget.widgetType">
+      <div *ngSwitchCase="'HEADING'">
+        <div [ngSwitch]="widget.size">
+          <div *ngSwitchCase="1">
+            <h1>{{widget.text}}</h1>
+          </div>
+          <div *ngSwitchCase="2">
+            <h2>{{widget.text}}</h2>
+          </div>
+          <div *ngSwitchCase="3">
+            <h3>{{widget.text}}</h3>
+          </div>
+          <div *ngSwitchCase="4">
+            <h4>{{widget.text}}</h4>
+          </div>
+        </div>
+      </div>
+      <div *ngSwitchCase="'IMAGE'">
+        <div>
+          <img [style.width]="widget.width"
+               [src]="widget.url"/>
+        </div>
+      </div>
+      <div *ngSwitchCase="'YOUTUBE'">
+        <div class="embed-responsive embed-responsive-16by9 youtube-widget">
+          <iframe [style.width]="widget.width"
+                  [style.height]="widget.width"
+                  [src]="this.getYoutubeEmbedUrl(widget.url)"
+                  frameborder="0"
+                  allowfullscreen></iframe>
+        </div>
+      </div>
+      <div *ngSwitchCase="'HTML'">
+        <div [innerHTML]="widget.text">
+        </div>
+      </div>
+      <div *ngSwitchCase="'Text'">
+        <div *ngIf="widget.formatted">
+          <quill-editor [(ngModel)]="widget.text" name="text"></quill-editor>
+        </div>
+
+        <input *ngIf="!widget.formatted && (!widget.rows || widget.rows===1)"
+               placeholder="{{widget.placeholder}}" class="form-control"/>
+
+        <textarea *ngIf="!widget.formatted && (widget.rows > 1)"
+                  rows="{{widget.rows}}" placeholder="{{widget.placeholder}}"
+                  class="form-control">{{widget.text}}</textarea>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<nav class="navbar navbar-default navbar-fixed-bottom">
+  <div class="container-fluid navbar-text pull-right">
+    <a routerLink="/user">
+      <span class="glyphicon glyphicon-user sw-icon-padding pull-right"></span>
+    </a>
+  </div>
+</nav>

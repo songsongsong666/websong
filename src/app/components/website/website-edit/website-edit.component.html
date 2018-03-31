@@ -1,0 +1,107 @@
+
+<!-- top navbar-->
+<nav class="navbar navbar-fixed-top sw-nav-blue">
+  <div class="row">
+    <div class="col-xs-4 hidden-xs">
+      <div class="container-fluid">
+        <p class="navbar-text pull-left">
+          <a routerLink="/user"
+             class="navbar-link sw-text-white">
+            <span class="glyphicon glyphicon-chevron-left"></span>
+          </a>
+        </p>
+        <a routerLink="/user/{{uid}}/website"
+           class="pull-left navbar-brand thick">
+          <b class="sw-text-white">Websites</b>
+        </a>
+        <a routerLink="/user/{{uid}}/website/new"
+           class="navbar-link navbar-text pull-right sw-icon-padding">
+          <span class="glyphicon glyphicon-plus sw-text-white"></span>
+        </a>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-8 pull-right">
+      <div class="container-fluid">
+        <a routerLink="/user/{{uid}}/website/{{wid}}"
+           class="pull-left navbar-brand thick">
+          <b class="sw-text-white">Edit Website</b>
+        </a>
+        <button type="submit"
+                [disabled]="!f.valid"
+                form="webForm"
+                class="btn btn-xs sw-button-transparent navbar-link navbar-text pull-right sw-icon-padding">
+          <span class="glyphicon glyphicon-ok sw-text-white"></span>
+        </button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!--left websites-->
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-xs-4 hidden-xs">
+      <ul class="list-group">
+        <li class="list-group-item sw-borderless"
+            *ngFor="let website of websites">
+          <a class="sw-link"
+             routerLink="/user/{{uid}}/website/{{website._id}}/page">{{website.name}}</a>
+          <a routerLink="/user/{{uid}}/website/{{website._id}}">
+            <span class="glyphicon glyphicon-cog pull-right"></span>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <!--right editor-->
+    <div class="col-sm-8 col-xs-12">
+      <form (ngSubmit)="update()"
+            #f ="ngForm"
+            id="webForm">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text"
+                 id="name"
+                 name="name"
+                 required
+                 placeholder="any name"
+                 ngModel="{{website.name}}"
+                 #name="ngModel"
+                 class="form-control"/>
+        </div>
+        <span class="help-block"
+              *ngIf="!name.valid && name.touched">Name can't be empty!</span>
+        <div class="form-group">
+          <label for="description">Website Desciption</label>
+          <textarea id="description"
+                    name="description"
+                    rows="5"
+                    placeholder="anything related to this website"
+                    ngModel="{{website.description}}"
+                    #description="ngModel"
+                    class="form-control"></textarea>
+        </div>
+        <div class="row">
+          <div class="col-xs-4">
+            <a (click)="remove()"
+               class="btn btn-danger btn-block">Delete</a>
+          </div>
+          <div class="col-xs-4 pull-right">
+            <a routerLink="/user/{{uid}}/website"
+               class="btn btn-warning btn-block">Cancel</a>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<nav class="navbar navbar-default navbar-fixed-bottom sw-nav-blue">
+  <div class="container-fluid">
+    <a routerLink="/user"
+       class="navbar-text pull-right">
+      <span class="glyphicon glyphicon-user sw-icon-padding sw-text-white"></span>
+    </a>
+  </div>
+</nav>
