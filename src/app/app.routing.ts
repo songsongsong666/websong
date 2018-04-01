@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+
+>>>>>>> 1b95fc6f573466117996656fac42b345848cdef4
 
 import {Routes, RouterModule} from '@angular/router';
 // import {HomeComponent} from './components/home/home.component';
